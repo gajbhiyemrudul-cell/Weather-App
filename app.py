@@ -1,12 +1,9 @@
 import requests
 import streamlit as st
-from dotenv import load_dotenv
 import os
 from datetime import datetime
 
-load_dotenv()
-
-API_KEY = os.getenv("WEATHER_API_KEY")
+API_KEY = st.secrets("WEATHER_API_KEY")
 
 st.set_page_config(
     page_title = "Weather App",
@@ -27,6 +24,7 @@ API_URL = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_
 if st.button("Fetch Weather Data"):
    if city.strip() == "":
       st.warning("Please enter a city name.")
+      st.stop()
    response = requests.get(API_URL)
 
    if response.status_code == 200:
