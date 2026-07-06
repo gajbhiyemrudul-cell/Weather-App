@@ -3,7 +3,7 @@ import streamlit as st
 import os
 from datetime import datetime
 
-API_KEY = st.secrets("WEATHER_API_KEY")
+API_KEY = st.secrets["WEATHER_API_KEY"]
 
 st.set_page_config(
     page_title = "Weather App",
