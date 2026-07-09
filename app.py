@@ -1,9 +1,15 @@
 import requests
 import streamlit as st
 import os
+from dotenv import load_dotenv
 from datetime import datetime
 
-API_KEY = st.secrets["WEATHER_API_KEY"]
+load_dotenv()
+
+try:
+    API_KEY = st.secrets["WEATHER_API_KEY"]
+except Exception:
+    API_KEY = os.getenv("WEATHER_API_KEY")
 
 st.set_page_config(
     page_title = "Weather App",
